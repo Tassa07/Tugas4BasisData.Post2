@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apa Itu Normalisasi pada ERD</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffe4ec;
+      margin: 0;
+      padding: 0;
+      color: #4a4a4a;
+    }
+    header {
+      background-color: #ffb6c1;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 3px solid #ff6f91;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+    .profile {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .profile img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ff80ab;
+    }
+    .profile h2 {
+      margin: 10px 0 5px;
+      color: #ff4081;
+    }
+    .content h3, .content h4 {
+      color: #ff4081;
+      margin-top: 25px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ffc1d6;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #ffb6c1;
+      color: white;
+    }
+    footer {
+      text-align: center;
+      background-color: #ffb6c1;
+      color: white;
+      padding: 15px 0;
+      margin-top: 40px;
+      border-top: 3px solid #ff6f91;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Blog: Apa Itu Normalisasi pada ERD</h1>
+  </header>
+
+  <!-- Kontainer Utama -->
+  <div class="container">
+
+    <!-- Profil Penulis -->
+    <div class="profile">
+      <img src="foto1.jpg" alt="Foto Profil">
+      <h2>Tassa Safitri</h2>
+      <p>NIM: 24416255201022</p>
+      <p>Kelas: IF24B</p>
+    </div>
+
+    <!-- Isi Konten -->
+    <div class="content">
+      <h3>Pengertian Normalisasi</h3>
+      <p>
+        Normalisasi adalah proses penting dalam perancangan basis data yang bertujuan untuk menata data agar tidak terjadi duplikasi, inkonsistensi, dan ketergantungan yang tidak perlu. 
+        Dalam konteks <b>Entity Relationship Diagram (ERD)</b>, normalisasi membantu kita membagi data menjadi beberapa tabel yang saling berhubungan melalui <i>primary key</i> dan <i>foreign key</i>.
+      </p>
+      <p>
+        Proses ini membuat struktur database menjadi lebih efisien, mudah dipelihara, serta menghindari anomali seperti kesalahan saat menambah, menghapus, atau memperbarui data. 
+        Dengan kata lain, normalisasi adalah langkah untuk memastikan bahwa setiap data hanya disimpan di satu tempat yang semestinya.
+      </p>
+
+      <h3>Tujuan Normalisasi</h3>
+      <ul>
+        <li>Menghindari data yang berulang atau duplikasi.</li>
+        <li>Memastikan setiap data disimpan di tempat yang sesuai dengan fungsinya.</li>
+        <li>Meningkatkan efisiensi penyimpanan dan kecepatan akses data.</li>
+        <li>Mempermudah perawatan dan pengembangan database di masa depan.</li>
+      </ul>
+
+      <h3>Tahapan Normalisasi</h3>
+      <p>Normalisasi dilakukan secara bertahap dalam beberapa bentuk normal (normal form). Berikut adalah tiga bentuk normal utama yang paling umum digunakan:</p>
+
+      <h4>1. Bentuk Normal Pertama (1NF)</h4>
+      <p>
+        Suatu tabel dikatakan memenuhi <b>1NF</b> jika setiap kolom hanya berisi nilai tunggal (tidak boleh ada data yang berulang atau berupa kumpulan nilai).
+      </p>
+      <p><b>Contoh Tabel Sebelum 1NF:</b></p>
+
+      <table>
+        <tr>
+          <th>ID Pelanggan</th>
+          <th>Nama</th>
+          <th>Nomor Telepon</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Ani</td>
+          <td>0812345, 0822222</td>
+        </tr>
+      </table>
+
+      <p><b>Setelah 1NF:</b></p>
+      <table>
+        <tr>
+          <th>ID Pelanggan</th>
+          <th>Nama</th>
+          <th>Nomor Telepon</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Ani</td>
+          <td>0812345</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Ani</td>
+          <td>0822222</td>
+        </tr>
+      </table>
+      <p>Setiap baris kini memiliki nilai tunggal pada kolom “Nomor Telepon”.</p>
+
+      <h4>2. Bentuk Normal Kedua (2NF)</h4>
+      <p>
+        Suatu tabel dikatakan memenuhi <b>2NF</b> jika sudah memenuhi 1NF dan semua atribut non-kunci bergantung sepenuhnya pada primary key, bukan hanya sebagian dari key.
+      </p>
+      <p><b>Contoh Tabel Sebelum 2NF:</b></p>
+      <table>
+        <tr>
+          <th>ID Pesanan</th>
+          <th>ID Produk</th>
+          <th>Nama Produk</th>
+          <th>Harga</th>
+          <th>Jumlah</th>
+        </tr>
+        <tr>
+          <td>101</td>
+          <td>P01</td>
+          <td>Mawar</td>
+          <td>10000</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>101</td>
+          <td>P02</td>
+          <td>Melati</td>
+          <td>8000</td>
+          <td>1</td>
+        </tr>
+      </table>
+
+      <p>
+        Di tabel ini, “Nama Produk” dan “Harga” bergantung pada ID Produk, bukan pada seluruh primary key (ID Pesanan + ID Produk). 
+        Jadi kita perlu memecah tabel menjadi dua: tabel <b>Produk</b> dan tabel <b>Detail Pesanan</b>.
+      </p>
+
+      <p><b>Setelah 2NF:</b></p>
+      <table>
+        <tr><th>Tabel Produk</th></tr>
+      </table>
+      <table>
+        <tr>
+          <th>ID Produk</th>
+          <th>Nama Produk</th>
+          <th>Harga</th>
+        </tr>
+        <tr>
+          <td>P01</td>
+          <td>Mawar</td>
+          <td>10000</td>
+        </tr>
+        <tr>
+          <td>P02</td>
+          <td>Melati</td>
+          <td>8000</td>
+        </tr>
+      </table>
+
+      <table>
+        <tr><th>Tabel Detail Pesanan</th></tr>
+      </table>
+      <table>
+        <tr>
+          <th>ID Pesanan</th>
+          <th>ID Produk</th>
+          <th>Jumlah</th>
+        </tr>
+        <tr>
+          <td>101</td>
+          <td>P01</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>101</td>
+          <td>P02</td>
+          <td>1</td>
+        </tr>
+      </table>
+
+      <h4>3. Bentuk Normal Ketiga (3NF)</h4>
+      <p>
+        Suatu tabel dikatakan memenuhi <b>3NF</b> jika sudah memenuhi 2NF dan tidak ada atribut non-kunci yang bergantung pada atribut non-kunci lainnya.
+      </p>
+      <p><b>Contoh Tabel Sebelum 3NF:</b></p>
+      <table>
+        <tr>
+          <th>ID Pegawai</th>
+          <th>Nama Pegawai</th>
+          <th>ID Departemen</th>
+          <th>Nama Departemen</th>
+        </tr>
+        <tr>
+          <td>01</td>
+          <td>Rina</td>
+          <td>D01</td>
+          <td>Keuangan</td>
+        </tr>
+      </table>
+
+      <p>
+        Di sini “Nama Departemen” bergantung pada “ID Departemen”, bukan langsung pada primary key. Maka kita pisahkan menjadi dua tabel: <b>Pegawai</b> dan <b>Departemen</b>.
+      </p>
+
+      <p><b>Setelah 3NF:</b></p>
+      <table>
+        <tr><th>Tabel Pegawai</th></tr>
+      </table>
+      <table>
+        <tr>
+          <th>ID Pegawai</th>
+          <th>Nama Pegawai</th>
+          <th>ID Departemen</th>
+        </tr>
+        <tr>
+          <td>01</td>
+          <td>Rina</td>
+          <td>D01</td>
+        </tr>
+      </table>
+
+      <table>
+        <tr><th>Tabel Departemen</th></tr>
+      </table>
+      <table>
+        <tr>
+          <th>ID Departemen</th>
+          <th>Nama Departemen</th>
+        </tr>
+        <tr>
+          <td>D01</td>
+          <td>Keuangan</td>
+        </tr>
+      </table>
+
+      <h3>Kesimpulan</h3>
+      <p>
+        Normalisasi pada ERD adalah langkah penting untuk memastikan desain database lebih efisien, bebas dari redudansi, dan memiliki hubungan antar tabel yang jelas.
+        Dengan menerapkan tahapan normalisasi mulai dari 1NF hingga 3NF, sistem informasi dapat berjalan dengan lebih baik, meminimalkan kesalahan data, serta mempermudah pengelolaan data di masa mendatang.
+      </p>
+      <p>
+        Proses ini menjadi dasar yang kuat bagi pengembang sistem untuk membangun aplikasi yang terstruktur dan mudah dikembangkan, baik untuk skala kecil seperti toko online sederhana, 
+        maupun skala besar seperti sistem akademik universitas.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Blog Teknik Informatika - Dibuat oleh Tassa Safitri</p>
+  </footer>
+
+</body>
+</html>
